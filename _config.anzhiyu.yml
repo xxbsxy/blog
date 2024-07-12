@@ -30,27 +30,18 @@ nav:
       item:
         - name: 备用博客
           link: https://blog.cgdcgd.cc/
-          
-      item:
         - name: NextChat聊天
           link: https://chat.cgdcgd.cc/
-    #   item:
-    #     - name: LobeChat聊天
-    #       link: https://chat.cgdcgd.cc/
-    #   item:
-    #     - name: Bing聊天
-    #       link: https://bing.cgdcgd.cc/
-    #   item:
-    #     - name: Docker镜像站
-    #       link: https://image.cgdcgd.cc/
-    # - title: 监控
-    #   item:
-    #     - name: 服务器监控
-    #       link: https://www.cgdcgd.cc/
-    # - title: 网盘
-    #   item:
-    #     - name: 私人网盘
-    #       link: https://cloud.cgdcgd.cc/
+        - name: LobeChat聊天
+          link: https://chat.cgdcgd.cc/
+        - name: Bing聊天
+          link: https://bing.cgdcgd.cc/
+        - name: Docker镜像站
+          link: https://image.cgdcgd.cc/
+        - name: 服务器监控
+          link: https://www.cgdcgd.cc/
+        - name: 私人网盘
+          link: https://cloud.cgdcgd.cc/
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
 mourn:
@@ -527,8 +518,8 @@ footer:
       enable: false
       link: /copyright
     linkList:
-      - link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu
-        text: 主题
+      # - link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu
+      #   text: 主题
       # - link: https://image.anheyu.com
       #   text: 图床
       - link: https://beian.miit.gov.cn/
@@ -1053,7 +1044,7 @@ home_top:
   timemode: date #date/updated
   title: 生活明朗
   subTitle: 万物可爱。
-  siteText: anheyu.com
+  siteText: cgdcgd.cc
   category:
     - name: 前端
       path: /categories/前端开发/
@@ -1076,10 +1067,9 @@ home_top:
     swiper_css: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css #swiper css依赖
     swiper_js: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.js #swiper js依赖
   banner:
-    tips: 新品主题
-    title: Theme-AnZhiYu
-    image: https://bu.dusays.com/2023/05/13/645fa3cf90d70.webp
-    link: https://docs.anheyu.com/
+    tips:
+    title:
+    image: /img/post/home.png
 
 # 朋友圈配置
 friends_vue:
@@ -1222,8 +1212,8 @@ rightClickMenu:
 
 # 首页随便逛逛people模式 而非技能点模式，关闭后为技能点模式需要配置creativity.yml
 peoplecanvas:
-  enable: true
-  img: https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png
+  enable: false
+  img: /img/post/home.png
 
 # 动效
 dynamicEffect:
