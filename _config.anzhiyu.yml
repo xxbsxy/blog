@@ -46,7 +46,7 @@ mourn:
 # Code Blocks (代码相关)
 # --------------------------------------
 
-highlight_theme: darker #  darker / pale night / light / ocean / mac / mac light / false
+highlight_theme: mac #  darker / pale night / light / ocean / mac / mac light / false
 highlight_copy: true # copy button
 highlight_lang: true # show the code language
 highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
@@ -201,7 +201,7 @@ mainTone:
 # wordcount (字数统计)
 # see https://blog.anheyu.com/posts/c27d.html#字数统计
 wordcount:
-  enable: true
+  enable: false
   post_wordcount: true
   min2read: true
   total_wordcount: true
@@ -847,7 +847,7 @@ busuanzi:
 # Formal: Month/Day/Year Time or Year/Month/Day Time
 runtimeshow:
   enable: true
-  publish_date: 13/11/2022 00:00:00
+  publish_date: 11/11/2022 00:00:00
 
 # Console - Newest Comments
 newest_comments:
@@ -1204,7 +1204,7 @@ agreementPopup:
 
 # 右键菜单
 rightClickMenu:
-  enable: false
+  enable: true
 
 # 首页随便逛逛people模式 而非技能点模式，关闭后为技能点模式需要配置creativity.yml
 peoplecanvas:
