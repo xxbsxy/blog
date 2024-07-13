@@ -2,7 +2,7 @@
 title: Maven
 categories: Java
 tags: Java
-cover: /img/post/16.png
+cover: /img/post/meven.png
 abbrlink: 7273cdc
 date: 2023-10-25 19:25:00
 updated: 2023-10-25 19:25:00

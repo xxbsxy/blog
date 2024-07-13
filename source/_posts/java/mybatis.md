@@ -2,7 +2,7 @@
 title: Mybatis
 categories: Java
 tags: Spring
-cover: /img/post/12.png
+cover: /img/post/mybatis.png
 abbrlink: 51cloiu
 date: 2023-11-05 22:25:00
 updated: 2023-11-05 22:25:00

@@ -2,7 +2,7 @@
 title: Spring-IOC
 categories: Java
 tags: Spring
-cover: /img/post/2.png
+cover: /img/post/spring.png
 abbrlink: 51cfb9c
 date: 2023-10-27 19:25:00
 updated: 2023-10-27 19:25:00

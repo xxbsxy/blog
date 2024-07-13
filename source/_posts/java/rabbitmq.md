@@ -2,7 +2,7 @@
 title: RabbitMQ
 categories: Java
 tags: RabbitMQ
-cover: /img/post/20.png
+cover: /img/post/rabbitmq.png
 abbrlink: 51cleee
 date: 2024-01-01 19:25:00
 updated: 2024-01-01 19:25:00
@@ -659,20 +659,20 @@ public class ErrorMessageConfig {
 
 当一个队列中的消息满足下列情况之一时，可以成为死信（dead letter）：
 
-- 消费者使用basic.reject或 basic.nack声明消费失败，并且消息的requeue参数设置为false
+- 消费者使用 basic.reject 或 basic.nack 声明消费失败，并且消息的 requeue 参数设置为 false
 - 消息是一个过期消息，超时无人消费
 - 要投递的队列消息堆积满了，最早的消息可能成为死信
 
-如果该队列配置了dead-letter-exchange属性，指定了一个交换机，那么队列中的死信就会投递到这个交换机中，而这个交换机称为死信交换机（Dead Letter Exchange，简称DLX）。
+如果该队列配置了 dead-letter-exchange 属性，指定了一个交换机，那么队列中的死信就会投递到这个交换机中，而这个交换机称为死信交换机（Dead Letter Exchange，简称 DLX）。
 
 ### TTL
 
-TTL，也就是Time-To-Live。如果一个队列中的消息TTL结束仍未消费，则会变为死信，ttl超时分为两种情况：
+TTL，也就是 Time-To-Live。如果一个队列中的消息 TTL 结束仍未消费，则会变为死信，ttl 超时分为两种情况：
 
 - 消息所在的队列设置了存活时间
 - 消息本身设置了存活时间
 
-要给队列设置超时时间，需要在声明队列时配置x-message-ttl属性：
+要给队列设置超时时间，需要在声明队列时配置 x-message-ttl 属性：
 
 ```java
 @Bean
@@ -686,7 +686,7 @@ public Queue ttlQueue(){
 
 注意，这个队列设定了死信交换机为`dl.ttl.direct`
 
-声明交换机，将ttl与交换机绑定：
+声明交换机，将 ttl 与交换机绑定：
 
 ```java
 @Bean
@@ -699,7 +699,7 @@ public Binding ttlBinding(){
 }
 ```
 
-发送消息，但是不要指定TTL：
+发送消息，但是不要指定 TTL：
 
 ```java
 @Test
@@ -717,17 +717,17 @@ public void testTTLQueue() {
 
 ### 延迟队列
 
-利用TTL结合死信交换机，我们实现了消息发出后，消费者延迟收到消息的效果。这种消息模式就称为延迟队列（Delay Queue）模式。
+利用 TTL 结合死信交换机，我们实现了消息发出后，消费者延迟收到消息的效果。这种消息模式就称为延迟队列（Delay Queue）模式。
 
 延迟队列的使用场景包括：
 
 - 延迟发送短信
-- 用户下单，如果用户在15 分钟内未支付，则自动取消
-- 预约工作会议，20分钟后自动通知所有参会人员
+- 用户下单，如果用户在 15 分钟内未支付，则自动取消
+- 预约工作会议，20 分钟后自动通知所有参会人员
 
 ### 惰性队列
 
-从RabbitMQ的3.6.0版本开始，就增加了Lazy Queues的概念，也就是惰性队列。
+从 RabbitMQ 的 3.6.0 版本开始，就增加了 Lazy Queues 的概念，也就是惰性队列。
 
 惰性队列的特征如下：
 
@@ -753,4 +753,3 @@ public void testTTLQueue() {
       )
     )
 ```
-

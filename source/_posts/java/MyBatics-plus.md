@@ -2,7 +2,7 @@
 title: MyBatis-Plus
 categories: Java
 tags: Spring
-cover: /img/post/13.png
+cover: /img/post/mybatisplus.png
 abbrlink: 51olkj
 date: 2023-11-12 19:25:00
 updated: 2023-11-12 19:25:00

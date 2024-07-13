@@ -2,7 +2,7 @@
 title: Spring-Mvc
 categories: Java
 tags: Spring
-cover: /img/post/8.png
+cover: /img/post/spring.png
 abbrlink: 51caccc
 date: 2023-11-07 19:25:00
 updated: 2023-11-07 19:25:00

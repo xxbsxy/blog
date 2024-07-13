@@ -2,7 +2,7 @@
 title: Java基础
 categories: Java
 tags: Java
-cover: /img/post/22.png
+cover: /img/post/java.png
 abbrlink: 7273rty
 date: 2023-12-24 19:25:00
 updated: 2023-12-24 19:25:00

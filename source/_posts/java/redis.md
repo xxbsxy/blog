@@ -2,7 +2,7 @@
 title: Redis
 categories: Java
 tags: Redis
-cover: /img/post/17.png
+cover: /img/post/redis.png
 abbrlink: 51c234e
 date: 2024-01-03 19:25:00
 updated: 2024-01-04 19:25:00

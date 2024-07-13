@@ -2,7 +2,7 @@
 title: Spring-AOP
 categories: Java
 tags: Spring
-cover: /img/post/14.png
+cover: /img/post/spring.png
 abbrlink: 51cll9c
 date: 2023-11-01 19:25:00
 updated: 2023-11-01 19:25:00
