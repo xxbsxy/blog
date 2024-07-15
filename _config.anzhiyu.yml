@@ -24,7 +24,7 @@ menu:
 nav:
   enable: true
   travelling: false
-  clock: false
+  clock: true
   menu:
     - title: 网页
       item:
@@ -39,7 +39,7 @@ nav:
         - name: Docker镜像站
           link: https://image.cgdcgd.cc/
         - name: 服务器监控
-          link: https://www.cgdcgd.cc/
+          link: https://status.cgdcgd.cc/
         - name: 私人网盘
           link: https://cloud.cgdcgd.cc/
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
