@@ -1,0 +1,46 @@
+- class_name: 好物
+  description: 我的装备
+  tip: 一起享受科技带来的乐趣
+  top_background: https://bu.dusays.com/2023/07/05/64a4c38842b7a.webp
+  good_things:
+    - title: 电子产品
+      description:
+      equipment_list:
+        - name: 华为 MateBook 16
+          specification: AMD 5800H 16G / 512GB
+          description: 屏幕显示效果好、色彩准确、对比度强、性能强劲、续航优秀。可以用来开发和设计。
+          image: /img/equipment/matebook.png
+          link: https://www.apple.com.cn/airpods-3rd-generation/
+        - name: 荣耀 100 Pro
+          specification: 16G / 512GB
+          description: 搭载第二代骁龙8移动平台、6.78英寸OLED圆角屏、后置三摄、前置5000万像素摄像头的旗舰手机。
+          image: /img/equipment/honor.png
+          link: https://www.apple.com.cn/airpods-3rd-generation/
+        - name: 华为 FreeBuds Pro 3
+          specification: 雅川青
+          description: 是全球首款应用星闪连接核心技术，支持 1.5 Mbps 无损传输，实现超 CD 级无损音质。搭载麒麟 A2 芯片。
+          image: /img/equipment/pro3.png
+          link: https://www.apple.com.cn/airpods-3rd-generation/
+        - name: 华为 Watch GT 3
+          specification: 标准版
+          description: HUAWEI WATCH GT 3采用全新升级的 TruSeen™ 5.0 心率监测，支持全天候的及高原环境下的血氧监测
+          image: /img/equipment/gt3.png
+          link: https://www.apple.com.cn/airpods-3rd-generation/
+    - title: 运动
+      description:
+      equipment_list:
+        - name: 索康尼 坦途
+          specification: 40.5码 / 243克
+          description: 防滑耐磨 缓震回弹 舒适透气 稳定支撑 轻量 织物 慢跑 新白色/橙黄色
+          image: /img/equipment/tantu.png
+          link: https://www.apple.com.cn/apple-watch-series-8/
+        - name: 特步 160X 5.0
+          specification: 41码 / 200克
+          description: 防滑耐磨 碳板 竞速 减震回弹 集训 舒适轻便 全掌 百搭休闲 马拉松 黄色/黑色
+          image: /img/equipment/5.0.png
+          link: https://item.jd.com/100011269828.html
+        - name: 李宁 超轻 21
+          specification: 41码 / 195克
+          description: 李宁 超轻21 轻质 䨻丝 高回弹 体育训练 慢跑 跑鞋 标准白/荧光霞橘
+          image: /img/equipment/21.png
+          link: https://item.jd.com/100011269828.html
