@@ -1049,17 +1049,17 @@ home_top:
   siteText: cgdcgd.cc
   category:
     - name: 前端
-      path: /categories/前端开发/
+      path: /categories/前端/
       shadow: var(--anzhiyu-shadow-blue)
       class: blue
       icon: anzhiyu-icon-dove
-    - name: 大学
-      path: /categories/大学生涯/
+    - name: 吉他
+      path: /categories/吉他/
       shadow: var(--anzhiyu-shadow-red)
       class: red
       icon: anzhiyu-icon-fire
-    - name: 生活
-      path: /categories/生活日常/
+    - name: 运动
+      path: /categories/马拉松/
       shadow: var(--anzhiyu-shadow-green)
       class: green
       icon: anzhiyu-icon-book
