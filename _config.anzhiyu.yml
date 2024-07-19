@@ -43,8 +43,7 @@ nav:
           link: https://status.cgdcgd.cc/
         - name: 私人网盘
           link: https://cloud.cgdcgd.cc/
-        - name: 图片压缩
-          link: https://squoosh.cgdcgd.cc/
+
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
 mourn:
