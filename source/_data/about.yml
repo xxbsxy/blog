@@ -12,17 +12,17 @@
       - 脚踏实地行动派 🏃
       - 团队小组发动机 🧱
       - 壮汉人狠话不多 💢
-  name: 陈志伟
-  description: 是一名 前端工程师、学生、独立开发者、博主
+  name: cgd
+  description: 是一名 前端开发 热爱跑步、音乐、动漫
   aboutsiteTips:
     tips: 追求
     title1: 源于
     title2: 热爱而去 感受
     word:
-      - 学习
-      - 生活
+      - 动漫
+      - 音乐
       - 程序
-      - 体验
+      - 跑步
   helloAbout: Hello there!
   skillsTips:
     tips: 技能
@@ -31,11 +31,11 @@
     tips: 生涯
     title: 无限进步
     list:
-      - desc: EDU,软件工程专业
+      - desc: EDU,计算机专业
         color: "#357ef5"
-      - desc: EDU,软件工程专业
+      - desc: EDU,计算机专业
         color: "#357ef5"
-      - desc: EDU,软件工程专业
+      - desc: EDU,计算机专业
         color: "#357ef5"
     img: https://bu.dusays.com/2023/04/21/644287166329b.png
   statistic:
@@ -49,11 +49,10 @@
     backgroundDark: https://bu.dusays.com/2023/07/05/64a4c63495ac5.jpg
   selfInfo:
     selfInfoTips1: 生于
-    selfInfoContentYear: 2002
-    selfInfoTips2: 湖南信息学院
-    selfInfoContent2: 软件工程
+    selfInfoContentYear: 2001
+    selfInfoContent2: 计算机专业
     selfInfoTips3: 现在职业
-    selfInfoContent3: 大三学生👨‍🎓
+    selfInfoContent3: 前端开发
   personalities:
     author_name: 执政官
     personality_type: ESFJ-A
@@ -77,21 +76,21 @@
     comic_tips: 爱好番剧
     comic_title: 追番
     comic_list:
-      - name: 约定的梦幻岛
-        href: https://www.bilibili.com/bangumi/media/md5267750/?spm_id_from=666.25.b_6d656469615f6d6f64756c65.1
-        cover: https://bu.dusays.com/2023/05/27/647166c44b414.webp
-      - name: 咒术回战
-        href: https://www.bilibili.com/bangumi/media/md28229899/?spm_id_from=666.25.b_6d656469615f6d6f64756c65.1
-        cover: https://bu.dusays.com/2023/05/24/646db4398832e.webp
+      - name: 强风吹拂
+        href: https://www.bilibili.com/bangumi/media/md139352
+        cover: /img/关于/1.jpg
+      - name: 时光代理人
+        href: https://www.bilibili.com/bangumi/media/md28230742
+        cover: /img/关于/2.jpg
       - name: 紫罗兰永恒花园
-        href: https://www.bilibili.com/bangumi/media/md8892/?spm_id_from=666.25.b_6d656469615f6d6f64756c65.1
-        cover: https://bu.dusays.com/2023/05/24/646db43983d99.webp
-      - name: 鬼灭之刃
-        href: https://www.bilibili.com/bangumi/media/md22718131/?spm_id_from=666.25.b_6d656469615f6d6f64756c65.1
-        cover: https://bu.dusays.com/2023/05/24/646db439856a0.webp
-      - name: JOJO的奇妙冒险 黄金之风
-        href: https://www.bilibili.com/bangumi/media/md135652/?spm_id_from=666.25.b_6d656469615f6d6f64756c65.1
-        cover: https://bu.dusays.com/2023/05/30/64760e38d651a.webp
+        href: https://www.bilibili.com/bangumi/media/md8892
+        cover: /img/关于/3.jpg
+      - name: 孤独摇滚！
+        href: https://www.bilibili.com/bangumi/media/md28339735
+        cover: /img/关于/4.jpg
+      - name: 间谍过家家
+        href: https://www.bilibili.com/bangumi/media/md28237119
+        cover: /img/关于/5.jpg
   like:
     like_tips: 关注偏好
     like_title: 数码科技
