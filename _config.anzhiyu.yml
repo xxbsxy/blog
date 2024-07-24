@@ -1101,7 +1101,7 @@ LA:
 
 # 标签卖萌
 diytitle:
-  enable: true
+  enable: false
   leaveTitle: w(ﾟДﾟ)w 不要走！再看看嘛！
   backTitle: ♪(^∇^*)欢迎肥来！
 
