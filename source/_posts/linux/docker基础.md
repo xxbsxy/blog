@@ -7,7 +7,6 @@ abbrlink: 3f924cb1
 cover: /img/post/docker.png
 date: 2023-08-12 17:00:00
 updated: 2024-02-29 17:00:00
-sticky: 98
 ---
 
 ## 1. 帮助启动类命令
