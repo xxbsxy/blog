@@ -17,9 +17,9 @@ menu:
 
   关于:
     # 关于本人: /about/ || anzhiyu-icon-paper-plane
-    我的装备: /equipment/ || anzhiyu-icon-dice-d20
-  #   闲言碎语: /essay/ || anzhiyu-icon-lightbulb
-  #   随便逛逛: javascript:toRandomPost() || anzhiyu-icon-shoe-prints1
+    # 我的装备: /equipment/ || anzhiyu-icon-dice-d20
+    #   闲言碎语: /essay/ || anzhiyu-icon-lightbulb
+    随便逛逛: javascript:toRandomPost() || anzhiyu-icon-shoe-prints1
 
 # nav相关配置
 nav:
@@ -29,8 +29,6 @@ nav:
   menu:
     - title: 网页
       item:
-        - name: 备用博客
-          link: https://blog.cgdcgd.cc/
         - name: NextChat聊天
           link: https://gpt.cgdcgd.cc/
         - name: LobeChat聊天
