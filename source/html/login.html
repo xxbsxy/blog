@@ -1,82 +1,342 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
-	<title>安全登录</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>用户登录</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<style>
-		/* 优化后的CSS样式 */
+		:root {
+			--primary: #6366f1;
+			--secondary: #8b5cf6;
+			--accent: #ec4899;
+			--light: rgba(255, 255, 255, 0.9);
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+		}
+
 		body {
-			background: linear-gradient(135deg, #2c3e50, #3498db);
-			height: 100vh;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			margin: 0;
-			font-family: 'Arial', sans-serif;
+			min-height: 100vh;
+			background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+			overflow: hidden;
 		}
 
-		.login-box {
+		/* 动态光晕效果 */
+		.glow-effect {
+			position: fixed;
+			width: 200vw;
+			height: 200vh;
+			background: radial-gradient(circle at 50% 50%,
+					rgba(255, 255, 255, 0.4) 0%,
+					rgba(255, 255, 255, 0) 60%);
+			animation: glowMove 20s linear infinite;
+			pointer-events: none;
+		}
+
+		@keyframes glowMove {
+			0% {
+				transform: translate(-50%, -50%) scale(1);
+			}
+
+			50% {
+				transform: translate(50%, 50%) scale(1.2);
+			}
+
+			100% {
+				transform: translate(-50%, -50%) scale(1);
+			}
+		}
+
+		.container {
+			position: relative;
+			width: 440px;
+			padding: 40px;
 			background: rgba(255, 255, 255, 0.95);
-			padding: 2rem;
-			border-radius: 10px;
-			box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-			width: 350px;
+			border-radius: 20px;
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(10px);
+			transform: scale(0.9);
+			opacity: 0;
+			animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 		}
 
-		/* 更多样式细节... */
+		@keyframes scaleIn {
+			to {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+
+		.login-header {
+			text-align: center;
+			margin-bottom: 40px;
+			transform: translateY(20px);
+			opacity: 0;
+			animation: textSlide 0.8s 0.3s forwards;
+		}
+
+		@keyframes textSlide {
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+
+		.input-group {
+			position: relative;
+			margin-bottom: 30px;
+			opacity: 0;
+			transform: translateX(-20px);
+			animation: inputAppear 0.6s forwards;
+		}
+
+		@keyframes inputAppear {
+			to {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		.input-group:nth-child(1) {
+			animation-delay: 0.4s;
+		}
+
+		.input-group:nth-child(2) {
+			animation-delay: 0.5s;
+		}
+
+		.input-group input {
+			width: 100%;
+			padding: 16px 52px;
+			border: 2px solid #eee;
+			border-radius: 12px;
+			background: rgba(255, 255, 255, 0.8);
+			font-size: 16px;
+			transition: all 0.3s ease;
+		}
+
+		.input-group i {
+			position: absolute;
+			left: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			color: #666;
+			transition: 0.3s;
+		}
+
+		.input-group input:focus {
+			border-color: var(--primary);
+			box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+			background: white;
+		}
+
+		.input-group input:focus~i {
+			color: var(--primary);
+			transform: translateY(-50%) scale(1.2);
+		}
+
+		.password-toggle {
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			cursor: pointer;
+			color: #999;
+			transition: 0.3s;
+		}
+
+		.password-toggle:hover {
+			color: var(--primary);
+		}
+
+		.login-button {
+			width: 100%;
+			padding: 16px;
+			background: linear-gradient(135deg, var(--primary), var(--secondary));
+			color: white;
+			border: none;
+			border-radius: 12px;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: 600;
+			transition: 0.3s;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.login-button::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(120deg,
+					transparent,
+					rgba(255, 255, 255, 0.3),
+					transparent);
+			transition: 0.6s;
+		}
+
+		.login-button:hover::before {
+			left: 100%;
+		}
+
+		.social-login {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 15px;
+			margin-top: 30px;
+		}
+
+		.social-btn {
+			padding: 12px;
+			border-radius: 10px;
+			background: rgba(0, 0, 0, 0.05);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: 0.3s;
+			position: relative;
+		}
+
+		.social-btn:hover {
+			background: var(--primary);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+		}
+
+		.social-btn i {
+			font-size: 24px;
+			color: #555;
+			transition: 0.3s;
+		}
+
+		.social-btn:hover i {
+			color: white;
+		}
+
+		/* 响应式设计 */
+		@media (max-width: 480px) {
+			.container {
+				width: 90%;
+				padding: 24px;
+			}
+
+			.login-header h1 {
+				font-size: 1.8em;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.container {
+				width: 500px;
+				padding: 48px;
+			}
+		}
+
+		/* 新增动画 */
+		@keyframes ripple {
+			to {
+				transform: scale(2);
+				opacity: 0;
+			}
+		}
+
+		.ripple-effect {
+			position: absolute;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, 0.4);
+			transform: scale(0);
+			animation: ripple 0.6s linear;
+			pointer-events: none;
+		}
 	</style>
 </head>
 
 <body>
-	<div class="login-box">
-		<h2>系统登录</h2>
-		<form id="authForm">
+	<div class="glow-effect"></div>
+
+	<div class="container">
+		<div class="login-header">
+			<h1 style="color: #2d3748;">欢迎回来</h1>
+			<p style="color: #718096; margin-top: 12px;">开启全新体验</p>
+		</div>
+		<form id="loginForm">
 			<div class="input-group">
-				<input type="text" id="username" placeholder="用户名" required>
+				<input type="text" required value="admin" id="username">
+				<i class="material-icons">person_outline</i>
 			</div>
 			<div class="input-group">
-				<input type="password" id="password" placeholder="密码" required>
+				<input type="password" id="password" required>
+				<i class="material-icons">lock_outline</i>
+				<!-- <i class="material-icons password-toggle" onclick="togglePassword()">visibility_off</i> -->
 			</div>
-			<button type="submit">登录</button>
-			<div id="errorMsg" class="error"></div>
+			<button type="submit" class="login-button">
+				立即登录
+			</button>
+			<div class="social-login">
+				<div class="social-btn">
+					<i class="material-icons">android</i>
+				</div>
+				<div class="social-btn">
+					<i class="material-icons">fingerprint</i>
+				</div>
+				<div class="social-btn">
+					<i class="material-icons">qr_code_2</i>
+				</div>
+			</div>
 		</form>
 	</div>
 
 	<script>
-		document.getElementById('authForm').addEventListener('submit', async (e) => {
-			e.preventDefault();
 
-			const username = document.getElementById('username').value;
-			const password = document.getElementById('password').value;
+		// 涟漪点击效果
+		document.addEventListener('click', function (e) {
+			if (e.target.closest('.login-button, .social-btn')) {
+				const btn = e.target.closest('.login-button, .social-btn');
+				const ripple = document.createElement('div');
+				const rect = btn.getBoundingClientRect();
+				const size = Math.max(rect.width, rect.height);
 
-			// 生成Basic Auth头
-			const authHeader = 'Basic ' + btoa(username + ':' + password);
+				ripple.style.width = ripple.style.height = size + 'px';
+				ripple.style.left = e.clientX - rect.left - size / 2 + 'px';
+				ripple.style.top = e.clientY - rect.top - size / 2 + 'px';
+				ripple.classList.add('ripple-effect');
 
-			try {
-				// 尝试访问受保护资源
-				const response = await fetch('/', {
-					headers: { 'Authorization': authHeader },
-					credentials: 'same-origin'
-				});
-
-				if (response.ok) {
-					// 存储认证信息
-					localStorage.setItem('cachedAuth', authHeader);
-					window.location.href = '/'; // 跳转到目标页面
-				} else {
-					showError('认证失败，请检查凭证');
-				}
-			} catch (error) {
-				showError('网络连接异常');
+				btn.appendChild(ripple);
+				setTimeout(() => ripple.remove(), 600);
 			}
 		});
 
-		function showError(msg) {
-			const errorDiv = document.getElementById('errorMsg');
-			errorDiv.textContent = msg;
-			errorDiv.style.display = 'block';
-			setTimeout(() => errorDiv.style.display = 'none', 3000);
-		}
+		// 表单提交动画
+		document.getElementById('loginForm').addEventListener('submit', (e) => {
+			e.preventDefault();
+			const btn = document.querySelector('.login-button');
+			btn.style.transform = 'scale(0.95)';
+			setTimeout(() => btn.style.transform = 'scale(1)', 200);
+
+			e.preventDefault();
+			const username = document.getElementById('username').value;
+			const password = document.getElementById('password').value;
+			const auth = btoa(`${username}:${password}`);
+			const now = new Date();
+			const sevenDaysInSeconds = 7 * 24 * 60 * 60; // 计算七天的秒数
+			const expiry = now.getTime() + sevenDaysInSeconds * 1000; // 计算过期时间 (毫秒)
+			localStorage.setItem('auth', auth);
+			localStorage.setItem('expiry', expiry);
+			window.location.href = '/';
+		});
 	</script>
 </body>
 
