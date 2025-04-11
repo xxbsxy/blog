@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>万丈深渊 - 登录失败</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<style>
+		/* 通用样式 */
+		body {
+			margin: 0;
+			font-family: 'Roboto', sans-serif;
+			background-color: #000;
+			/* 纯黑色背景 */
+			color: #aaa;
+			/* 浅灰色文本 */
+			overflow: hidden;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transition: background-color 0.5s ease;
+			/* 背景颜色过渡 */
+		}
+
+		.container {
+			position: relative;
+			z-index: 2;
+			text-align: center;
+			padding: 40px;
+			background-color: rgba(0, 0, 0, 0.8);
+			/* 更暗的背景 */
+			border-radius: 10px;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+			backdrop-filter: blur(8px);
+			max-width: 500px;
+			width: 80%;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			/* 抖动和阴影过渡 */
+		}
+
+		.container.shake {
+			transform: translateX(-5px);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+		}
+
+		h1 {
+			font-size: 2.8em;
+			margin-bottom: 15px;
+			color: #fff;
+			text-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+		}
+
+		p {
+			font-size: 1.2em;
+			margin-bottom: 30px;
+			line-height: 1.7;
+		}
+
+		/* 模糊提示 */
+		.blurred-hint {
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 0.9em;
+			color: rgba(255, 255, 255, 0.2);
+			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+			filter: blur(3px);
+			pointer-events: none;
+			/* 确保不干扰点击事件 */
+		}
+
+		/* 图标样式 */
+		.error-icon {
+			font-size: 4em;
+			color: #e74c3c;
+			margin-bottom: 25px;
+			animation: pulse 2s infinite;
+			/* 脉冲动画 */
+		}
+
+		@keyframes pulse {
+			0% {
+				opacity: 0.8;
+				transform: scale(1);
+			}
+
+			50% {
+				opacity: 0.4;
+				transform: scale(1.1);
+			}
+
+			100% {
+				opacity: 0.8;
+				transform: scale(1);
+			}
+		}
+
+		/* 背景动画 */
+		.background {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			overflow: hidden;
+		}
+
+		.deep-space {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1) 100%);
+			z-index: 1;
+		}
+
+		.stars {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+			background-size: 250px 250px;
+			background-position: 0 0;
+			animation: stars 120s linear infinite;
+			z-index: 2;
+		}
+
+		.stars2 {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+			background-size: 150px 150px;
+			background-position: 100px 100px;
+			animation: stars2 90s linear infinite;
+			z-index: 3;
+		}
+
+		@keyframes stars {
+			from {
+				background-position: 0 0;
+			}
+
+			to {
+				background-position: 250px 250px;
+			}
+		}
+
+		@keyframes stars2 {
+			from {
+				background-position: 100px 100px;
+			}
+
+			to {
+				background-position: 250px 250px;
+			}
+		}
+
+		/* 响应式设计 - 手机 */
+		@media (max-width: 767px) {
+			.container {
+				width: 90%;
+				/* 手机上更宽 */
+				padding: 25px;
+			}
+
+			h1 {
+				font-size: 2em;
+				/* 减小标题字号 */
+			}
+
+			p {
+				font-size: 1em;
+				/* 减小段落字号 */
+			}
+
+			.error-icon {
+				font-size: 3em;
+				/* 减小图标大小 */
+				margin-bottom: 20px;
+			}
+
+			.blurred-hint {
+				font-size: 0.7em;
+			}
+
+			.stars {
+				background-size: 200px 200px;
+				/* 调整星空大小 */
+			}
+
+			.stars2 {
+				background-size: 120px 120px;
+			}
+		}
+
+		/* 响应式设计 - 平板 */
+		@media (min-width: 768px) and (max-width: 1023px) {
+			.container {
+				width: 70%;
+				/* 平板上稍微宽一些 */
+				padding: 35px;
+			}
+
+			h1 {
+				font-size: 2.5em;
+			}
+
+			p {
+				font-size: 1.1em;
+			}
+
+			.error-icon {
+				font-size: 3.5em;
+			}
+
+			.blurred-hint {
+				font-size: 0.8em;
+			}
+		}
+
+		/* 响应式设计 - 电脑 (不需要额外调整，因为默认样式已经适合) */
+		@media (min-width: 1024px) {
+			/* 电脑上的默认样式 */
+		}
+	</style>
+</head>
+
+<body>
+	<div class="background">
+		<div class="deep-space"></div>
+		<div class="stars"></div>
+		<div class="stars2"></div>
+	</div>
+
+	<div class="container">
+		<div class="content">
+
+			<h1>无尽的黑暗</h1>
+			<p>您已迷失方向，无法再次尝试。</p>
+		</div>
+
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>

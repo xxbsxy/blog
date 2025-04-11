@@ -2,23 +2,25 @@
 <html lang="zh-CN">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>用户登录</title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<style>
 		:root {
 			--primary: #6366f1;
 			--secondary: #8b5cf6;
 			--accent: #ec4899;
 			--light: rgba(255, 255, 255, 0.9);
+			--danger: #f44336;
+			/* Added for alert */
 		}
 
 		* {
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
-			font-family: 'Poppins', sans-serif;
+			font-family: "Poppins", sans-serif;
 		}
 
 		body {
@@ -30,16 +32,16 @@
 			overflow: hidden;
 		}
 
-		/* 动态光晕效果 */
+		/* Dynamic glow effect */
 		.glow-effect {
 			position: fixed;
 			width: 200vw;
 			height: 200vh;
-			background: radial-gradient(circle at 50% 50%,
-					rgba(255, 255, 255, 0.4) 0%,
-					rgba(255, 255, 255, 0) 60%);
+			background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 60%);
 			animation: glowMove 20s linear infinite;
 			pointer-events: none;
+			z-index: -1;
+			/* Ensure it's behind everything */
 		}
 
 		@keyframes glowMove {
@@ -67,6 +69,8 @@
 			transform: scale(0.9);
 			opacity: 0;
 			animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+			z-index: 1;
+			/* Ensure container is above glow */
 		}
 
 		@keyframes scaleIn {
@@ -144,6 +148,16 @@
 			transform: translateY(-50%) scale(1.2);
 		}
 
+		/* Style for error state */
+		.input-group input.error {
+			border-color: var(--danger);
+			box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.2);
+		}
+
+		.input-group input.error~i {
+			color: var(--danger);
+		}
+
 		.password-toggle {
 			position: absolute;
 			right: 20px;
@@ -174,16 +188,13 @@
 		}
 
 		.login-button::before {
-			content: '';
+			content: "";
 			position: absolute;
 			top: 0;
 			left: -100%;
 			width: 100%;
 			height: 100%;
-			background: linear-gradient(120deg,
-					transparent,
-					rgba(255, 255, 255, 0.3),
-					transparent);
+			background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
 			transition: 0.6s;
 		}
 
@@ -226,26 +237,7 @@
 			color: white;
 		}
 
-		/* 响应式设计 */
-		@media (max-width: 480px) {
-			.container {
-				width: 90%;
-				padding: 24px;
-			}
-
-			.login-header h1 {
-				font-size: 1.8em;
-			}
-		}
-
-		@media (min-width: 768px) {
-			.container {
-				width: 500px;
-				padding: 48px;
-			}
-		}
-
-		/* 新增动画 */
+		/* Ripple effect */
 		@keyframes ripple {
 			to {
 				transform: scale(2);
@@ -261,6 +253,101 @@
 			animation: ripple 0.6s linear;
 			pointer-events: none;
 		}
+
+		/* ---- Custom Alert Styles ---- */
+		#customAlertOverlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.6);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 1000;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.3s ease;
+		}
+
+		#customAlertOverlay.show {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.alert-box {
+			background: white;
+			padding: 25px 35px;
+			border-radius: 15px;
+			box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+			text-align: center;
+			min-width: 400px;
+			transform: scale(0.9);
+			transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+		}
+
+		#customAlertOverlay.show .alert-box {
+			transform: scale(1);
+		}
+
+		.alert-box p {
+			margin-bottom: 20px;
+			font-size: 16px;
+			color: #555;
+		}
+
+		.alert-box .alert-icon {
+			font-size: 48px;
+			color: var(--danger);
+			margin-bottom: 15px;
+			display: block;
+			/* Center the icon */
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.alert-box button {
+			padding: 10px 25px;
+			border: none;
+			border-radius: 8px;
+			background: var(--primary);
+			color: white;
+			font-size: 15px;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background 0.3s ease;
+		}
+
+		.alert-box button:hover {
+			background: var(--secondary);
+		}
+
+		/* ---- End Custom Alert Styles ---- */
+
+		/* Responsive design */
+		@media (max-width: 480px) {
+			.container {
+				width: 90%;
+				padding: 24px;
+			}
+
+			.login-header h1 {
+				font-size: 1.8em;
+			}
+
+			.alert-box {
+				max-width: 85%;
+				padding: 20px 25px;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.container {
+				width: 500px;
+				padding: 48px;
+			}
+		}
 	</style>
 </head>
 
@@ -269,22 +356,20 @@
 
 	<div class="container">
 		<div class="login-header">
-			<h1 style="color: #2d3748;">欢迎回来</h1>
-			<p style="color: #718096; margin-top: 12px;">开启全新体验</p>
+			<h1 style="color: #2d3748">欢迎回来</h1>
+			<p style="color: #718096; margin-top: 12px">开启全新体验</p>
 		</div>
 		<form id="loginForm">
 			<div class="input-group">
-				<input type="text" required value="admin" id="username">
+				<input type="text" id="username" required value="admin" />
 				<i class="material-icons">person_outline</i>
 			</div>
 			<div class="input-group">
-				<input type="password" id="password" required>
+				<input type="password" id="password" required />
 				<i class="material-icons">lock_outline</i>
 				<!-- <i class="material-icons password-toggle" onclick="togglePassword()">visibility_off</i> -->
 			</div>
-			<button type="submit" class="login-button">
-				立即登录
-			</button>
+			<button type="submit" class="login-button">立即登录</button>
 			<div class="social-login">
 				<div class="social-btn">
 					<i class="material-icons">android</i>
@@ -299,44 +384,158 @@
 		</form>
 	</div>
 
-	<script>
+	<!-- Custom Alert HTML -->
+	<div id="customAlertOverlay">
+		<div class="alert-box">
+			<i class="material-icons alert-icon">warning</i>
+			<p id="alertMessage">这是一条提示信息</p>
+			<button id="closeAlertBtn">知道了</button>
+		</div>
+	</div>
 
-		// 涟漪点击效果
-		document.addEventListener('click', function (e) {
-			if (e.target.closest('.login-button, .social-btn')) {
-				const btn = e.target.closest('.login-button, .social-btn');
-				const ripple = document.createElement('div');
+	<script>
+		let num = 0;
+
+		function load() {
+			const n = localStorage.getItem("num") || 0; // Get the number of attempts from local storage
+			num = n;
+
+		}
+
+		load()
+
+		// Get elements for custom alert
+		const customAlertOverlay = document.getElementById("customAlertOverlay");
+		const alertMessage = document.getElementById("alertMessage");
+		const closeAlertBtn = document.getElementById("closeAlertBtn");
+		const passwordInput = document.getElementById("password"); // Get password input element
+
+		// Function to show the custom alert
+		function showAlert(message) {
+			alertMessage.textContent = message;
+			customAlertOverlay.classList.add("show");
+		}
+
+		// Function to hide the custom alert
+		function hideAlert() {
+			customAlertOverlay.classList.remove("show");
+			// Remove error style from password field when alert is closed
+			passwordInput.classList.remove("error");
+		}
+
+		// Event listener for the close button
+		closeAlertBtn.addEventListener("click", hideAlert);
+
+		// Optional: close alert if user clicks outside the box
+		customAlertOverlay.addEventListener("click", (e) => {
+			if (e.target === customAlertOverlay) {
+				hideAlert();
+			}
+		});
+
+		// Ripple click effect
+		document.addEventListener("click", function (e) {
+			if (e.target.closest(".login-button, .social-btn")) {
+				const btn = e.target.closest(".login-button, .social-btn");
+
+				// Don't add ripple if the button click resulted in an error validation
+				if (btn.classList.contains("login-button") && passwordInput.classList.contains("error")) {
+					return;
+				}
+
+				const ripple = document.createElement("div");
 				const rect = btn.getBoundingClientRect();
 				const size = Math.max(rect.width, rect.height);
 
-				ripple.style.width = ripple.style.height = size + 'px';
-				ripple.style.left = e.clientX - rect.left - size / 2 + 'px';
-				ripple.style.top = e.clientY - rect.top - size / 2 + 'px';
-				ripple.classList.add('ripple-effect');
+				ripple.style.width = ripple.style.height = size + "px";
+				ripple.style.left = e.clientX - rect.left - size / 2 + "px";
+				ripple.style.top = e.clientY - rect.top - size / 2 + "px";
+				ripple.classList.add("ripple-effect");
 
+				// Ensure ripple is appended correctly even with other content
+				ripple.style.zIndex = 1; // Make sure ripple appears above button content
+				btn.style.position = "relative"; // Parent needs position relative
+				btn.style.overflow = "hidden"; // Keep ripple contained
 				btn.appendChild(ripple);
 				setTimeout(() => ripple.remove(), 600);
 			}
 		});
 
-		// 表单提交动画
-		document.getElementById('loginForm').addEventListener('submit', (e) => {
-			e.preventDefault();
-			const btn = document.querySelector('.login-button');
-			btn.style.transform = 'scale(0.95)';
-			setTimeout(() => btn.style.transform = 'scale(1)', 200);
+		// Form submission logic with validation
+		document.getElementById("loginForm").addEventListener("submit", (e) => {
+			e.preventDefault(); // Prevent default form submission in all cases first
 
-			e.preventDefault();
-			const username = document.getElementById('username').value;
-			const password = document.getElementById('password').value;
-			const auth = btoa(`${username}:${password}`);
-			const now = new Date();
-			const sevenDaysInSeconds = 7 * 24 * 60 * 60; // 计算七天的秒数
-			const expiry = now.getTime() + sevenDaysInSeconds * 1000; // 计算过期时间 (毫秒)
-			localStorage.setItem('auth', auth);
-			localStorage.setItem('expiry', expiry);
-			window.location.href = '/';
+			// Remove previous error state
+			passwordInput.classList.remove("error");
+
+			const username = document.getElementById("username").value;
+			const password = passwordInput.value;
+			const btn = document.querySelector(".login-button");
+
+			// --- Simple Validation Example ---
+			// Replace 'your_correct_password' with the actual password you expect
+			const correctPassword = "xxbsxy123"; // Example correct password
+
+			if (username === "admin" && password === correctPassword) {
+				// Credentials are correct
+
+				// Optional: Login button animation
+				btn.style.transform = "scale(0.95)";
+				setTimeout(() => (btn.style.transform = "scale(1)"), 200);
+
+				// Proceed with login: save auth token and redirect
+				const auth = btoa(`${username}:${password}`);
+				const now = new Date();
+				const sevenDaysInSeconds = 7 * 24 * 60 * 60; // 7 days in seconds
+				const expiry = now.getTime() + sevenDaysInSeconds * 1000; // Expiry time in milliseconds
+				localStorage.setItem("auth", auth);
+				localStorage.setItem("expiry", expiry);
+
+				// Redirect after a short delay to allow animation (optional)
+				setTimeout(() => {
+					window.location.href = "/"; // Redirect to home page or dashboard
+				}, 300);
+			} else {
+				if (num >= 2) {
+					window.location.href = '../html/lock.html';
+				}
+				// Credentials are incorrect
+				passwordInput.classList.add("error"); // Add error style to password input
+				showAlert("用户名或密码输入错误！"); // Show custom alert
+
+				// Add a shake animation to the container for feedback (optional)
+				const container = document.querySelector(".container");
+				container.animate(
+					[
+						{ transform: "translateX(0)" },
+						{ transform: "translateX(-8px)" },
+						{ transform: "translateX(8px)" },
+						{ transform: "translateX(-8px)" },
+						{ transform: "translateX(8px)" },
+						{ transform: "translateX(0)" },
+					],
+					{
+						duration: 400,
+						easing: "ease-in-out",
+					}
+				);
+				num++;
+				localStorage.setItem("num", num); // Store the number of attempts in local storage
+			}
 		});
+
+		// // Optional: Password visibility toggle (if you uncomment the HTML eye icon)
+		// function togglePassword() {
+		//     const passwordField = document.getElementById('password');
+		//     const toggleIcon = document.querySelector('.password-toggle');
+		//     if (passwordField.type === 'password') {
+		//         passwordField.type = 'text';
+		//         toggleIcon.textContent = 'visibility';
+		//     } else {
+		//         passwordField.type = 'password';
+		//         toggleIcon.textContent = 'visibility_off';
+		//     }
+		// }
 	</script>
 </body>
 
