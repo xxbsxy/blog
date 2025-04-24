@@ -374,7 +374,7 @@
 				<div class="social-btn">
 					<i class="material-icons">android</i>
 				</div>
-				<div class="social-btn">
+				<div class="social-btn" id="login">
 					<i class="material-icons">fingerprint</i>
 				</div>
 				<div class="social-btn">
@@ -461,6 +461,7 @@
 			}
 		});
 
+
 		// Form submission logic with validation
 		document.getElementById("loginForm").addEventListener("submit", (e) => {
 			e.preventDefault(); // Prevent default form submission in all cases first
@@ -524,18 +525,67 @@
 			}
 		});
 
-		// // Optional: Password visibility toggle (if you uncomment the HTML eye icon)
-		// function togglePassword() {
-		//     const passwordField = document.getElementById('password');
-		//     const toggleIcon = document.querySelector('.password-toggle');
-		//     if (passwordField.type === 'password') {
-		//         passwordField.type = 'text';
-		//         toggleIcon.textContent = 'visibility';
-		//     } else {
-		//         passwordField.type = 'password';
-		//         toggleIcon.textContent = 'visibility_off';
-		//     }
-		// }
+		document.getElementById("login").addEventListener("click", (e) => {
+			e.preventDefault(); // Prevent default form submission in all cases first
+
+			// Remove previous error state
+			passwordInput.classList.remove("error");
+
+			const username = document.getElementById("username").value;
+			const password = passwordInput.value;
+			const btn = document.querySelector(".login-button");
+
+			// --- Simple Validation Example ---
+			// Replace 'your_correct_password' with the actual password you expect
+			const correctPassword = "xxbsxy123"; // Example correct password
+
+			if (username === "admin" && password === correctPassword) {
+				// Credentials are correct
+
+				// Optional: Login button animation
+				btn.style.transform = "scale(0.95)";
+				setTimeout(() => (btn.style.transform = "scale(1)"), 200);
+
+				// Proceed with login: save auth token and redirect
+				const auth = btoa(`${username}:${password}`);
+				const now = new Date();
+				const sevenDaysInSeconds = 7 * 24 * 60 * 60; // 7 days in seconds
+				const expiry = now.getTime() + 1000; // Expiry time in milliseconds
+				localStorage.setItem("auth", auth);
+				localStorage.setItem("expiry", expiry);
+
+				// Redirect after a short delay to allow animation (optional)
+				setTimeout(() => {
+					window.location.href = "/"; // Redirect to home page or dashboard
+				}, 300);
+			} else {
+				if (num >= 2) {
+					window.location.href = '../html/lock.html';
+				}
+				// Credentials are incorrect
+				passwordInput.classList.add("error"); // Add error style to password input
+				showAlert("用户名或密码输入错误！"); // Show custom alert
+
+				// Add a shake animation to the container for feedback (optional)
+				const container = document.querySelector(".container");
+				container.animate(
+					[
+						{ transform: "translateX(0)" },
+						{ transform: "translateX(-8px)" },
+						{ transform: "translateX(8px)" },
+						{ transform: "translateX(-8px)" },
+						{ transform: "translateX(8px)" },
+						{ transform: "translateX(0)" },
+					],
+					{
+						duration: 400,
+						easing: "ease-in-out",
+					}
+				);
+				num++;
+				localStorage.setItem("num", num); // Store the number of attempts in local storage
+			}
+		});
 	</script>
 </body>
 
