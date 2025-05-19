@@ -45,7 +45,7 @@
   transition: all 0.3s ease-out 0s;
 }
 #article-container ol > li::before {
-  margin-top: 0.65em;
+  margin-top: 0.6em;
   width: 1.45em;
   height: 1.45em;
   border-radius: 0.725em;
